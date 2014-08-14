@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="DataServiceService" targetNamespace="http://Service.DataBillingService.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://Service.DataBillingService.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://Service.DataBillingService.org/" schemaLocation="DataServiceService_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="parameters" element="tns:loginResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part name="parameters" element="tns:login">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DataService">
+    <wsdl:operation name="login">
+      <wsdl:input name="login" message="tns:login">
+    </wsdl:input>
+      <wsdl:output name="loginResponse" message="tns:loginResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DataServiceServiceSoapBinding" type="tns:DataService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="login">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataServiceService">
+    <wsdl:port name="DataServicePort" binding="tns:DataServiceServiceSoapBinding">
+      <soap:address location="http://localhost:9090/DataServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
